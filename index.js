@@ -1,6 +1,7 @@
 import Paddle from './src/paddle';
 import InputHandler from './src/input';
 import Ball from './src/ball';
+import World from './src/world';
 
 const canvas = document.getElementById('app');
 const ctx = canvas.getContext('2d');
@@ -8,9 +9,9 @@ const ctx = canvas.getContext('2d');
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
 
-const paddle = new Paddle(GAME_WIDTH, GAME_HEIGHT);
-const ball = new Ball(GAME_WIDTH,GAME_HEIGHT);
-new InputHandler(paddle);
+const game = new World(GAME_WIDTH, GAME_HEIGHT);
+
+game.start();
 
 // paddle.draw(ctx);
 
@@ -25,11 +26,8 @@ function gameLoop (timeStamp) {
   ctx.fillStyle = 'linen';
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
-
-  paddle.update(deltaT);
-  paddle.draw(ctx);
-  ball.update(deltaT);
-  ball.draw(ctx);
+  game.update(deltaT);
+  game.draw(ctx);
   requestAnimationFrame(gameLoop);
 }
 

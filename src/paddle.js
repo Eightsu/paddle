@@ -1,20 +1,20 @@
 export default class Paddle {
-  constructor (gameWidth, gameHeight) {
-    this.gameWidth = gameWidth;
+  constructor (World) {
+    this.gameWidth = World.gameWidth;
     this.width = 150;
     this.height = 30;
     this.maxSpd = 10;
     this.spd = 0;
 
-    this.postion = {
-      x: gameWidth / 2 - this.width / 2,
-      y: gameHeight - this.height - 8,
+    this.position = {
+      x: World.gameWidth / 2 - this.width / 2,
+      y: World.gameHeight - this.height - 8,
     };
   }
 
   draw (ctx) {
     ctx.fillStyle = 'grey';
-    ctx.fillRect(this.postion.x, this.postion.y, this.width, this.height);
+    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
   moveLeft () {
@@ -30,8 +30,8 @@ export default class Paddle {
   }
 
   update (deltaT) {
-    this.postion.x += this.spd;
-    if (this.postion.x < 0) this.postion.x = 0;
-    if (this.postion.x + this.width >= this.gameWidth) this.postion.x = this.gameWidth - this.width;
+    this.position.x += this.spd;
+    if (this.position.x < 0) this.position.x = 0;
+    if (this.position.x + this.width >= this.gameWidth) this.position.x = this.gameWidth - this.width;
   }
 }
