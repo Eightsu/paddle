@@ -1,0 +1,6 @@
+module.exports = {
+  "extends": "airbnb-base",
+  "rules": {
+    "space-before-function-paren": ["error", "always"]
+  }
+}
