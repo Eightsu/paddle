@@ -9,7 +9,7 @@ const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
 
 const paddle = new Paddle(GAME_WIDTH, GAME_HEIGHT);
-const ball = new Ball();
+const ball = new Ball(GAME_WIDTH,GAME_HEIGHT);
 new InputHandler(paddle);
 
 // paddle.draw(ctx);
@@ -21,8 +21,14 @@ function gameLoop (timeStamp) {
   const deltaT = timeStamp - history;
   history = timeStamp;
   ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+
+  ctx.fillStyle = 'linen';
+  ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+
+
   paddle.update(deltaT);
   paddle.draw(ctx);
+  ball.update(deltaT);
   ball.draw(ctx);
   requestAnimationFrame(gameLoop);
 }
