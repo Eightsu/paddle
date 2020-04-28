@@ -13,8 +13,10 @@ export default class Paddle {
   }
 
   draw (ctx) {
-    ctx.fillStyle = 'grey';
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+    // ctx.fillStyle = 'linen';
+    ctx.strokeStyle='black'
+    ctx.strokeRect(this.position.x, this.position.y, this.width, this.height);
+    ctx.stroke();
   }
 
   moveLeft () {

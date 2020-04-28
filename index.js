@@ -1,6 +1,3 @@
-import Paddle from './src/paddle';
-import InputHandler from './src/input';
-import Ball from './src/ball';
 import World from './src/world';
 
 const canvas = document.getElementById('app');
@@ -21,8 +18,7 @@ let history = 0;
 function gameLoop (timeStamp) {
   const deltaT = timeStamp - history;
   history = timeStamp;
-  ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-
+  // ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
   ctx.fillStyle = 'linen';
   ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
