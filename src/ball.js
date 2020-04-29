@@ -1,18 +1,21 @@
+import detectCollision from './collisionDetection';
+
+
 export default class Ball {
   constructor (World) {
-    this.size = 64;
+    this.size = 32;
     this.game = World;
     this.gameWidth = World.gameWidth;
     this.gameHeight = World.gameHeight;
     this.image = document.getElementById('ball');
     this.spd = {
-      x: 8,
-      y: 8,
+      x: 2,
+      y: -2,
     };
 
     this.position = {
-      x: 10,
-      y: 2,
+      x: 50,
+      y: 400,
     };
   }
 
@@ -31,17 +34,7 @@ export default class Ball {
       this.spd.y = -this.spd.y;
     }
 
-    const bottom = this.position.y + this.size;
-    const paddleTop = this.game.paddle.position.y;
-    const leftOfPaddle = this.game.paddle.position.x;
-    const rightOfPaddle = this.game.paddle.position.x + this.game.paddle.width;
-
-
-    // let paddleTop = this.game.paddle.position.x;
-
-    if (bottom >= paddleTop
-      && this.position.x >= leftOfPaddle
-      && this.position.x + this.size <= rightOfPaddle) {
+    if (detectCollision(this, this.game.paddle)) {
       this.spd.y = -this.spd.y;
       this.position.y = this.game.paddle.position.y - this.size;
     }
