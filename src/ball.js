@@ -40,7 +40,7 @@ export default class Ball {
     // let paddleTop = this.game.paddle.position.x;
 
     if (bottom >= paddleTop
-      && this.position.x + 2 >= leftOfPaddle
+      && this.position.x >= leftOfPaddle
       && this.position.x + this.size <= rightOfPaddle) {
       this.spd.y = -this.spd.y;
       this.position.y = this.game.paddle.position.y - this.size;
